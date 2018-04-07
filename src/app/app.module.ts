@@ -5,11 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatchService } from './match.service';
 
 import { AppComponent } from './app.component';
+import { MatchlistComponent } from './matchlist/matchlist.component';
+import { MatchsummaryComponent } from './matchsummary/matchsummary.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MatchlistComponent,
+    MatchsummaryComponent
   ],
   imports: [
     BrowserModule,
