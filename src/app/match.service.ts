@@ -24,7 +24,7 @@ export class MatchService {
   getMatchSummary(file: string): Observable<MatchSummary> {
     return this.http.get<MatchSummary>(this.api + '/get_summary', {
       params: {'file': file}
-    })
+    });
   }
 
 }

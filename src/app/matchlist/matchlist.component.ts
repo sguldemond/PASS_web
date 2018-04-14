@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { Match, MatchService } from '../match.service'
 
@@ -8,17 +9,23 @@ import { Match, MatchService } from '../match.service'
 })
 export class MatchlistComponent implements OnInit {
 
-  public matches: Match[];
+  private file: string;
+  private matchList$: Observable<Match[]>;
 
   constructor(private matchService: MatchService) {}
 
   ngOnInit() {
-    this.updateMatches();
+    this.matchList$ = this.matchService.getMatches();
   }
 
-  updateMatches() {
-    this.matchService.getMatches()
-      .subscribe(data => this.matches = data);
+  selectFile(file) {
+    console.log(file);
+    this.file = file;
   }
+
+  // updateMatches() {
+  //   this.matchService.getMatches()
+  //     .subscribe(data => this.matchList$ = data);
+  // }
 
 }

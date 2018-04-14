@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { MatchSummary, MatchService } from '../match.service'
 
 
@@ -7,33 +8,31 @@ import { MatchSummary, MatchService } from '../match.service'
   templateUrl: './matchsummary.component.html',
   styleUrls: ['./matchsummary.component.css']
 })
-export class MatchsummaryComponent implements OnInit {
+export class MatchsummaryComponent implements OnInit, OnChanges {
 
-  public file: string;
-  public matchSummary: MatchSummary;
-
-  public home: string;
-  public away: string;
+  @Input() file: string;
+  public matchSummary$: Observable<MatchSummary>;
 
   constructor(private matchService: MatchService) {
     this.file = 'ACH_FCD_19122015_goal.xml';
-    this.matchSummary;
   }
 
   ngOnInit() {
-    this.updateMatches();
+    this.showSummary;
   }
 
-  updateMatches() {
-    this.matchService.getMatchSummary(this.file)
-      .subscribe(
-        data => this.matchSummary = data,
-        error => console.log(error),
-        () => this.showSummary());
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    for(let propName in changes) {
+      let changedProp = changes[propName];
+      console.log(changedProp);
+      
+      this.file = changedProp.currentValue;
+      this.showSummary();
+    }
   }
 
   showSummary() {
-    console.log(this.matchSummary);
+    this.matchSummary$ = this.matchService.getMatchSummary(this.file);
   }
 
 
