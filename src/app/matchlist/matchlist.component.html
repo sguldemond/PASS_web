@@ -5,8 +5,10 @@
   <ul class="items">
     <li *ngFor='let match of matchList'>
       <a (click)="selectFile(match.file)">
-        <span class="badge">date</span>
-        <span>{{ match.file }}</span>
+        <span class="badge" style="width: 120px">{{ match.info.MatchDate }}</span>
+        <span>
+          {{ matchItem(match) }}
+        </span>
       </a>
     </li>
   </ul>

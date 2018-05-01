@@ -9,8 +9,8 @@ import { Match, MatchService } from '../match.service'
 })
 export class MatchlistComponent implements OnInit {
 
-  private file: string;
-  private matchList$: Observable<Match[]>;
+  public file: string;
+  public matchList$: Observable<Match[]>;
 
   constructor(private matchService: MatchService) {}
 
@@ -21,6 +21,10 @@ export class MatchlistComponent implements OnInit {
   selectFile(file) {
     console.log(file);
     this.file = file;
+  }
+
+  matchItem(match) {
+    return `${match.info.league}`;
   }
 
   // updateMatches() {

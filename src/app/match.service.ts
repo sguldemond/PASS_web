@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 export class Match {
-  constructor(public file: string, public team1: string, public team2: string, public score: string) {}
+  constructor(public file: string, public info: {}) {}
 }
 
 export class MatchSummary {
@@ -13,16 +13,16 @@ export class MatchSummary {
 @Injectable()
 export class MatchService {
 
-  api = 'http://127.0.0.1:5000'
+  api_url = 'http://127.0.0.1:5000'
 
   constructor(private http: HttpClient) {}
 
   getMatches(): Observable<Match[]> {
-    return this.http.get<Match[]>(this.api + '/get_matches');
+    return this.http.get<Match[]>(this.api_url + '/get_matches');
   }
 
   getMatchSummary(file: string): Observable<MatchSummary> {
-    return this.http.get<MatchSummary>(this.api + '/get_summary', {
+    return this.http.get<MatchSummary>(this.api_url + '/get_summary', {
       params: {'file': file}
     });
   }
