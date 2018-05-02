@@ -13,9 +13,7 @@ export class MatchsummaryComponent implements OnInit, OnChanges {
   @Input() file: string;
   public matchSummary$: Observable<MatchSummary>;
 
-  constructor(private matchService: MatchService) {
-    this.file = 'ACH_FCD_19122015_goal.xml';
-  }
+  constructor(private matchService: MatchService) {  }
 
   ngOnInit() {
     this.showSummary;
@@ -32,7 +30,12 @@ export class MatchsummaryComponent implements OnInit, OnChanges {
   }
 
   showSummary() {
-    this.matchSummary$ = this.matchService.getMatchSummary(this.file);
+    if(this.file != undefined) {
+      this.matchSummary$ = this.matchService.getMatchSummary(this.file);
+    }
+    // this.matchSummary$.subscribe(data => {
+    //   console.log(data);
+    // })
   }
 
 

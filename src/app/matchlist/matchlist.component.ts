@@ -23,8 +23,8 @@ export class MatchlistComponent implements OnInit {
     this.file = file;
   }
 
-  matchItem(match) {
-    return `${match.info.league}`;
+  matchInfo(info) {
+    return `${info.league}: ${info.HomeTeam} - ${info.AwayTeam} (${info.FinalScore})`;
   }
 
   // updateMatches() {

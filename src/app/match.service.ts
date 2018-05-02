@@ -7,7 +7,7 @@ export class Match {
 }
 
 export class MatchSummary {
-  constructor(public home: string, public away: string) {}
+  constructor(public meta: {}, public content: {}) {}
 }
 
 @Injectable()
@@ -24,6 +24,7 @@ export class MatchService {
   getMatchSummary(file: string): Observable<MatchSummary> {
     return this.http.get<MatchSummary>(this.api_url + '/get_summary', {
       params: {'file': file}
+      
     });
   }
 
