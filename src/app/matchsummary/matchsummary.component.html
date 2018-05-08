@@ -1,14 +1,28 @@
-
 <div *ngIf="matchSummary$ | async as matchSummary">
-  <p>Match: {{ matchSummary.meta | json }}</p>
-  
-  <!-- <h2>Home</h2> -->
-  <p>
-    Summary: {{ matchSummary.content | json }}
-  </p>
+  <div>
+    <!-- <p>{{ matchSummary.meta | json }}</p> -->
+    <h3>Thuis: {{ matchSummary.meta.home_team }}</h3>
+    <h3>Uit: {{ matchSummary.meta.away_team }}</h3>
+    <p>Score: {{ matchSummary.meta.final_score }}</p>
+    <p>Datum: {{ matchService.matchDate(matchSummary.meta) }}</p>
+    <p>Divisie: {{ matchSummary.meta.league }}</p>
+  </div>
+  <div>
+    <h3>Samenvatting thuis</h3>
+    <p><b>Titel: </b>{{ matchSummary.content.home_team.title }}</p>
+    <p><b>Algemeen: </b>{{ matchSummary.content.home_team.general }}</p>
+    <p><b>Statistieken: </b>{{ matchSummary.content.home_team.game_statistics }}</p>
+    <p><b>Verloop: </b>{{ matchSummary.content.home_team.game_course }}</p>
+  </div>
+  <div>
+    <h3>Samenvatting uit</h3>
+    <p><b>Titel: </b>{{ matchSummary.content.away_team.title }}</p>
+    <p><b>Algemeen: </b>{{ matchSummary.content.away_team.general }}</p>
+    <p><b>Statistieken: </b>{{ matchSummary.content.away_team.game_statistics }}</p>
+    <p><b>Verloop: </b>{{ matchSummary.content.away_team.game_course }}</p>
+  </div>
 
-  <!-- <h2>Away</h2>
-  <p>
-    {{ matchSummary.away }}
+  <!-- <p>
+    Summary: {{ matchSummary.content | json }}
   </p> -->
 </div>

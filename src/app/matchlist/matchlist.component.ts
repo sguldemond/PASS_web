@@ -24,8 +24,25 @@ export class MatchlistComponent implements OnInit {
   }
 
   matchInfo(info) {
-    return `${info.league}: ${info.HomeTeam} - ${info.AwayTeam} (${info.FinalScore})`;
+    return `${info.league}: ${info.home_team} - ${info.away_team} (${info.final_score})`;
   }
+
+  matchDate(matchInfo) {
+    var date = new Date(matchInfo.match_date);
+    // TODO: format aanpassen DD-MM-YYYY
+    var monthNames = [
+      "januari", "februari", "maart",
+      "april", "mei", "juni", "juli",
+      "augustus", "september", "oktober",
+      "november", "december"
+    ];
+  
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+  
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
 
   // updateMatches() {
   //   this.matchService.getMatches()

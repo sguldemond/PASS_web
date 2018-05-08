@@ -1,11 +1,11 @@
 <app-matchsummary [file]="file"></app-matchsummary>
 
 <div *ngIf="matchList$ | async as matchList">
-  <h2>Here are all the matches found: </h2>
+  <h2>Beschikbare wedstrijden: </h2>
   <ul class="items" style="width: 34em">
     <li *ngFor='let match of matchList'>
       <a (click)="selectFile(match.file)">
-        <span class="badge" style="width: 120px">{{ match.info.MatchDate }}</span>
+        <span class="badge" style="width: 120px">{{ matchService.matchDate(match.info) }}</span>
         <span>
           {{ matchInfo(match.info) }}
         </span>
