@@ -11,11 +11,15 @@ import { MatchSummary, MatchService } from '../match.service'
 export class MatchsummaryComponent implements OnInit, OnChanges {
 
   @Input() file: string;
+  public loading: boolean;
+  public status: string;
   public matchSummary$: Observable<MatchSummary>;
 
   constructor(private matchService: MatchService) {  }
 
   ngOnInit() {
+    this.loading = true;
+    this.status = "Samenvatting aan het ophalen...";
     this.showSummary;
   }
 

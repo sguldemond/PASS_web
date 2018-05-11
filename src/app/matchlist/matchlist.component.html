@@ -1,5 +1,8 @@
 <app-matchsummary [file]="file"></app-matchsummary>
 
+<div *ngIf="loading && !(matchList$ | async)">
+  <h3>{{ status }}</h3>
+</div>
 <div *ngIf="matchList$ | async as matchList">
   <h2>Beschikbare wedstrijden: </h2>
   <ul class="items" style="width: 34em">

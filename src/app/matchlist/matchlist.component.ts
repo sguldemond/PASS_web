@@ -9,40 +9,28 @@ import { Match, MatchService } from '../match.service'
 })
 export class MatchlistComponent implements OnInit {
 
+  public loading: boolean;
+  public status: string;
   public file: string;
   public matchList$: Observable<Match[]>;
 
   constructor(private matchService: MatchService) {}
 
   ngOnInit() {
+    this.loading = true;
+    this.status = "Wedstrijden aan het ophalen..."
     this.matchList$ = this.matchService.getMatches();
   }
 
   selectFile(file) {
     console.log(file);
     this.file = file;
+    this.status = "Samenvatting aan het ophalen..."
   }
 
   matchInfo(info) {
     return `${info.league}: ${info.home_team} - ${info.away_team} (${info.final_score})`;
   }
-
-  matchDate(matchInfo) {
-    var date = new Date(matchInfo.match_date);
-    // TODO: format aanpassen DD-MM-YYYY
-    var monthNames = [
-      "januari", "februari", "maart",
-      "april", "mei", "juni", "juli",
-      "augustus", "september", "oktober",
-      "november", "december"
-    ];
-  
-    var day = date.getDate();
-    var monthIndex = date.getMonth();
-    var year = date.getFullYear();
-  
-    return day + ' ' + monthNames[monthIndex] + ' ' + year;
-}
 
   // updateMatches() {
   //   this.matchService.getMatches()
