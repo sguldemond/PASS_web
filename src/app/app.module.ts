@@ -12,7 +12,7 @@ import { MatchsummaryComponent } from './matchsummary/matchsummary.component';
   declarations: [
     AppComponent,
     MatchlistComponent,
-    MatchsummaryComponent
+    MatchsummaryComponent,
   ],
   imports: [
     BrowserModule,

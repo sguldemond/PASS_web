@@ -5,10 +5,10 @@
 </div>
 <div *ngIf="matchList$ | async as matchList">
   <h2>Beschikbare wedstrijden: </h2>
-  <ul class="items" style="width: 34em">
+  <ul class="items" style="width: 550px">
     <li *ngFor='let match of matchList'>
       <a (click)="selectFile(match.file)">
-        <span class="badge" style="width: 120px">{{ matchService.matchDate(match.info) }}</span>
+        <span class="badge" style="width: 90px">{{ matchService.matchDate(match.info) }}</span>
         <span>
           {{ matchInfo(match.info) }}
         </span>
