@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { Match, MatchService } from '../match.service'
+import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'app-matchlist',
